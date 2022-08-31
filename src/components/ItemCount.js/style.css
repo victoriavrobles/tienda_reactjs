@@ -1,0 +1,27 @@
+.contador{
+    background-color: black;
+    padding: 15px;
+}
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+.itemCountButton {
+    padding: 25px;
+    border-style: solid;
+}
+
+.itemCount{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+button{
+    background-color: blanchedalmond;
+    padding: 10px;
+}
