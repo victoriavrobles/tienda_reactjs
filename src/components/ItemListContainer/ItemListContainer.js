@@ -1,13 +1,26 @@
-import ItemCount from '../ItemCount.js/ItemCount';
-import './style.css'
+import data from "./mock-data";
+import { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
 
-function ItemListContainer({greeting}) {
-    return(
-        <div>
-            <h2>{greeting}</h2>
-            <ItemCount stock="10"/>
-        </div>
-    );
-}
+const ItemListContainer = ({ greeting }) => {
+    const [items, setItems] = useState([]);
+
+    const getData = new Promise ((resolve, reject) => {
+        setTimeout(() => {
+            resolve(data);
+        }, 2000);
+    });
+
+    useEffect(() => {
+        getData.then((result) => {
+            setItems(result);
+            console.log(result)
+        })
+    }, []);
+
+    return (<>
+    <ItemList itemList={items} />
+    </>);
+};
 
 export default ItemListContainer;

@@ -1,0 +1,9 @@
+
+.item {
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+h2, h3{
+    font-size: 30px;
+}

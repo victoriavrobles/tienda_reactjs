@@ -8,16 +8,12 @@ const ItemCount = ({stock, initial}) => {
         const sumar = () => {
             if (ItemCount < stock){
                 setItemCount(ItemCount + 1);
-            } else {
-                setItemCount(0)
             }
         }
         const restar = () => {
             if (ItemCount > 1){
                 setItemCount(ItemCount - 1);
-            } else {
-                setItemCount(stock)
-            }
+            } 
         }
 
     return (
