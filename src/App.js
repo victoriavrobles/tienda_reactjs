@@ -2,15 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/Navbar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar/>
-      <header className="App-header">
-      <ItemListContainer greeting="Este es un texto provisorio"/>
-      </header>
+      {/* <ItemListContainer/> */}
+      <ItemDetailContainer/>
     </div>
   );
 }

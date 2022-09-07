@@ -1,8 +1,8 @@
-import data from "./mock-data";
+import data from "../ItemListContainer/mock-data";
 import { useState, useEffect } from "react";
-import ItemList from "../ItemList/ItemList";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemListContainer = ({ greeting }) => {
+const ItemDetailContainer = ({ greeting }) => {
     const [items, setItems] = useState([]);
 
     const getData = new Promise ((resolve, reject) => {
@@ -18,8 +18,8 @@ const ItemListContainer = ({ greeting }) => {
     }, []);
 
     return (<>
-    <ItemList itemList={items} />
+    <ItemDetail itemList={items} />
     </>);
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
