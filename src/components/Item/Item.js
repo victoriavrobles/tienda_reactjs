@@ -1,6 +1,7 @@
 import './style.css'
+import { Link } from 'react-router-dom'
 
-export default function Item ({title, image, description, sinopsis, price}) {
+export default function Item ({id, title, image, description, sinopsis, price}) {
     return (
         <div className="items">
         <div className="item">
@@ -9,7 +10,7 @@ export default function Item ({title, image, description, sinopsis, price}) {
             <p style={{fontStyle: "italic"}}>{description}</p>
             <p>{sinopsis}</p>
             <h3>Precio: ${price}</h3>
-            <button>Agregar al carrito</button>
+            <Link to={`/item/${id}`}><button>Ver más</button></Link>
         </div>
         </div>
     )
