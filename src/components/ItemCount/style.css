@@ -1,7 +1,7 @@
-.contador{
+/* .contador{
     background-color: black;
     padding: 15px;
-}
+} */
 
 .counter {
     display: flex;
@@ -20,8 +20,8 @@
     align-items: center;
     padding: 20px;
 }
-
+/* 
 button{
     background-color: blanchedalmond;
     padding: 10px;
-}
+} */

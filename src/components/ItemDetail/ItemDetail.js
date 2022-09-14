@@ -1,13 +1,25 @@
-import Item from "../Item/Item";
+import { useState } from "react";
+import ItemCount from '../ItemCount/ItemCount.js';
+import './ItemDetail.css';
 
-const ItemDetail = ({itemList}) => {
-    return (
-        <>
-        {itemList.map((producto) => {
-                return <Item key="id" title={producto.title} description={producto.description} sinopsis={producto.sinopsis} image={producto.image} price={producto.price}/>;
-                })}
-        </>
-    );
-};
+const ItemDetail = ({item})=>{
+    const [contador, setContador] = useState(0);
+
+    const onAdd = (dato)=>{
+        setContador(dato)
+    }
+
+    return(
+        <div className="item-detail">
+            <h2>{item.title}</h2>
+            <img style={{height: "200px", width: "auto"}} src={item.image} alt={item.title}/>
+            <p>{item.description}</p>
+            <p>{item.sinopsis}</p>
+            <h4>$ {item.price}</h4>
+            <h5 style={{textAlign: "center"}}>Cantidad: {contador}</h5>
+            <ItemCount stock={10} initial={1} onAdd={onAdd}/>
+        </div>
+    )
+}
 
 export default ItemDetail;

@@ -1,25 +1,30 @@
 import data from "../ItemListContainer/mock-data";
 import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = ({ greeting }) => {
-    // const {productId} = useParams();
+const ItemDetailContainer = () => {
+    const {productId} = useParams();
+    const [item, setItems] = useState({});
 
-    const [items, setItems] = useState([]);
-
-    const getData = new Promise ((resolve, reject) => {
-            resolve(data);
-    });
+    const getData = (id) => {
+        return new Promise ((resolve, reject) => {
+            const item = data.find(item => item.id === parseInt(id));
+            resolve(item)
+        })
+    };
 
     useEffect(() => {
-        getData.then((result) => {
-            setItems(result);
-        })
-    }, []);
+        const getProducto = async()=>{
+            const producto = await getData(productId);
+            console.log('producto', producto)
+            setItems(producto);
+        }
+        getProducto();
+    },[productId])
 
     return (<>
-    <ItemDetail itemList={items} />
+    <ItemDetail item={item} />
     </>);
 };
 
