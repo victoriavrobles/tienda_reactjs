@@ -7,10 +7,12 @@ import Contacto from './components/Paginas/Contacto';
 import Productos from './components/Paginas/Productos';
 import { CartProvider } from './context/CartContext';
 import { CartContainer } from './components/CartContainer/CartContainer';
+import { Container } from '@mui/system';
 
 
 function App() {
   return (
+    // <Container>
   <CartProvider>
     <BrowserRouter>
       <div>
@@ -29,6 +31,7 @@ function App() {
       </div>
     </BrowserRouter>
   </CartProvider>
+  // </Container>
   );
 }
 
