@@ -12,7 +12,7 @@ import { Container } from '@mui/system';
 
 function App() {
   return (
-    // <Container>
+    <Container>
   <CartProvider>
     <BrowserRouter>
       <div>
@@ -31,7 +31,7 @@ function App() {
       </div>
     </BrowserRouter>
   </CartProvider>
-  // </Container>
+</Container>
   );
 }
 

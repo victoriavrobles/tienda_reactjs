@@ -3,6 +3,8 @@ import { CartContext } from "../../context/CartContext";
 import {Link} from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { Button } from '@mui/material';
+import "./style.css"
 
 export const CartContainer = () => {
     const {listaProductosCart, removeItem, clear, precioTotal} = useContext(CartContext);
@@ -13,17 +15,18 @@ export const CartContainer = () => {
         listaProductosCart.length > 0 ? 
         <div className="cartcont">
             {listaProductosCart.map(item => (
-                <div>
-                <p>{item.title} - {item.quantity}</p>
-                <button onClick={()=>removeItem(item.id)}>Eliminar producto</button>
+                <div key={item.id}>
+                <Stack direction="row" spacing={2} justifyContent="center">
+                <p>Producto: "{item.title}" | Cantidad: {item.quantity}</p>
+                <Button variant="outlined" color="error" onClick={()=>removeItem(item.id)}>Eliminar producto</Button>
+                </Stack>
                 </div>
                 ))}
                 <p>Precio total: {precioTotal()}</p>
-                <button onClick={()=>clear()}>Vaciar carrito</button>
-                <button>Terminar compra</button>
+                <Button variant="outlined" color="error" sx={{padding: "10px", margin: "10px"}} onClick={()=>clear()}>Vaciar carrito</Button>
+                <Button variant="contained" color="success" sx={{padding: "10px", margin: "10px"}}>Terminar compra</Button>
                 </div>
                 : <>
-                <Stack sx={{ width: '100%' }} spacing={2}></Stack>
                 <Alert severity="info" sx={{padding: "10px", margin: "10px"}}>El carrito esta vacio</Alert>
                 <Link to="/">Volver a la página principal</Link>
                 </>
