@@ -3,6 +3,8 @@ import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { db } from "../../utils/firebase";
 import {collection, getDocs, query, where } from "firebase/firestore"
+import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -24,7 +26,11 @@ const ItemListContainer = ({ greeting }) => {
     }, [categoryId]);
 
     return (<>
+    <Box>
+      <Grid container sx={{m: '10px', alignContent: 'center'}}>
     <ItemList itemList={items} />
+    </Grid>
+    </Box>
     </>);
 };
 

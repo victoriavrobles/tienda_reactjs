@@ -1,3 +1,8 @@
+body{
+  margin: 0;
+  background-color: #f8ffd7;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +41,15 @@
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: #5C6BC0;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+a:hover {
+  color: black;
+}
+

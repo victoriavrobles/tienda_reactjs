@@ -3,7 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import {Link} from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { db } from "../../utils/firebase"
 import {collection, addDoc} from "firebase/firestore";
 import "./style.css"
@@ -32,6 +32,7 @@ export const CartContainer = () => {
 
     return (
     <div>
+        <Typography variant="h4" sx={{textAlign:'center', margin: '20px'}}>Tu pedido</Typography>
         {idOrden ? 
         <>
         <Alert severity="success" sx={{padding: "10px", margin: "10px"}}>Su compra fue realizada! Número de orden: {idOrden}</Alert>
@@ -43,14 +44,16 @@ export const CartContainer = () => {
         <div className="cartcont">
             {listaProductosCart.map(item => (
                 <div key={item.id}>
-                <Stack direction="row" spacing={2} justifyContent="center">
-                <p>Producto: "{item.title}" | Cantidad: {item.quantity}</p>
+                <Stack direction="row" spacing={2} justifyContent="center" sx={{mb: 2}}>
+                <Typography> Producto: "{item.title}" | Cantidad: {item.quantity}</Typography>
                 <Button variant="outlined" color="error" onClick={()=>removeItem(item.id)}>Eliminar producto</Button>
                 </Stack>
                 </div>
                 ))}
-                <p>Precio total: {precioTotal()}</p>
+                <Stack direction="row" spacing={2} justifyContent="center" sx={{mb: 2}}>
+                <Typography variant="h6">Precio total: {precioTotal()}</Typography>
                 <Button variant="outlined" color="error" sx={{padding: "10px", margin: "10px"}} onClick={()=>clear()}>Vaciar carrito</Button>
+                </Stack>
 
                 <form onSubmit={enviarOrden}>
                     <label>Nombre: </label>
