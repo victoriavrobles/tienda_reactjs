@@ -3,6 +3,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { db } from "../../utils/firebase";
 import {doc, getDoc} from "firebase/firestore";
+import { Box } from "@mui/material";
 
 const ItemDetailContainer = () => {
     const {productId} = useParams();
@@ -38,7 +39,9 @@ const ItemDetailContainer = () => {
     },[productId])
 
     return (<>
+    <Box>
     <ItemDetail item={item} />
+    </Box>
     </>);
 };
 

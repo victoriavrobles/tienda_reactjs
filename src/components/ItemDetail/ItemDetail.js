@@ -3,6 +3,8 @@ import ItemCount from '../ItemCount/ItemCount.js';
 import './ItemDetail.css';
 import { CartContext } from "../../context/CartContext.js";
 import {Link} from "react-router-dom";
+import { Button, Grid, Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
 
 const ItemDetail = ({item})=>{
     const {addItem} = useContext(CartContext);
@@ -14,22 +16,32 @@ const ItemDetail = ({item})=>{
     }
 
     return(
-        <div className="item-detail">
-            <h2>{item.title}</h2>
-            <img style={{height: "200px", width: "auto"}} src={item.image} alt={item.title}/>
-            <p>Autor/a: {item.autorx}</p>
-            <p>{item.sinopsis}</p>
-            <h4>$ {item.price}</h4>
-            <h5 style={{textAlign: "center"}}>Cantidad: {contador}</h5>
-            <div className="carrito"><ItemCount stock={10} initial={1} onAdd={onAdd}/>
+        <Container>
+    <Box>
+        <Typography variant="h3" align="center" sx={{mb: "45px"}}>{item.title}</Typography>
+        <Grid container rowSpacing={1} >
+            <Grid md={4}>
+            <img height="500"
+          width="325" src={item.image} alt={item.title}/>
+            </Grid>
+            <Grid md={8}>
+            <Typography variant="h6" sx={{my: "20px"}}>Autor/a: {item.autorx}</Typography>
+            <Typography variant="body1">{item.sinopsis}</Typography>
+            <Typography variant="h6" align="center" sx={{my: "20px"}}>Precio: ${item.price}</Typography>
+            <Typography style={{textAlign: "center"}}>Cantidad: {contador}</Typography>
+            <ItemCount stock={10} initial={1} onAdd={onAdd}/>
             {
             contador > 0 &&
+            <Box sx={{ justifyContent: 'center' }}>
             <Link to="/cart">
-                    <button>Finalizar compra</button>
+                    <Button color="secondary">Finalizar compra</Button>
                 </Link>
+                </Box>
         }
-        </div>
-        </div>
+        </Grid>
+        </Grid>
+    </Box>
+    </Container>
     )
 }
 

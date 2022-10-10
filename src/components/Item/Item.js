@@ -31,8 +31,8 @@ export default function Item ({item}) {
           <Typography variant="body2" color="text.secondary">Precio: ${item.price}</Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
+      <CardActions sx={{ justifyContent: "center"}}>
+        <Button variant="outlined" size="large" color="secondary">
         <Link to={`/item/${item.id}`}>Ver más</Link>
         </Button>
       </CardActions>

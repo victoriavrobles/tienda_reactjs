@@ -3,7 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import {Link} from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { Button, Typography } from '@mui/material';
+import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { db } from "../../utils/firebase"
 import {collection, addDoc} from "firebase/firestore";
 import "./style.css"
@@ -31,7 +31,7 @@ export const CartContainer = () => {
     }
 
     return (
-    <div>
+    <Container sx={{mb: '100px'}}>
         <Typography variant="h4" sx={{textAlign:'center', margin: '20px'}}>Tu pedido</Typography>
         {idOrden ? 
         <>
@@ -42,16 +42,33 @@ export const CartContainer = () => {
         {
         listaProductosCart.length > 0 ? 
         <div className="cartcont">
+            <TableContainer component={Paper} sx={{my: "30px"}}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+          <TableRow>
+           <TableCell></TableCell>
+            <TableCell>Producto</TableCell>
+            <TableCell>Cantidad</TableCell>
+            <TableCell>Precio unitario</TableCell>
+            <TableCell></TableCell>
+            </TableRow>
+            </TableHead>
             {listaProductosCart.map(item => (
-                <div key={item.id}>
-                <Stack direction="row" spacing={2} justifyContent="center" sx={{mb: 2}}>
-                <Typography> Producto: "{item.title}" | Cantidad: {item.quantity}</Typography>
-                <Button variant="outlined" color="error" onClick={()=>removeItem(item.id)}>Eliminar producto</Button>
-                </Stack>
-                </div>
-                ))}
-                <Stack direction="row" spacing={2} justifyContent="center" sx={{mb: 2}}>
-                <Typography variant="h6">Precio total: {precioTotal()}</Typography>
+            <TableBody>
+                <TableRow key={item.id}>
+                    <TableCell><img height="90" width="72" src={item.image} alt={item.title}/></TableCell>
+                    <TableCell>{item.title}</TableCell>
+                    <TableCell>{item.quantity}</TableCell>
+                    <TableCell>${item.price}</TableCell>
+                    <TableCell><Button variant="outlined" color="error" onClick={()=>removeItem(item.id)}>Eliminar producto</Button></TableCell>
+                </TableRow>
+            </TableBody>
+            ))}
+            </Table>
+            </TableContainer>
+                
+                <Stack spacing={2} justifyContent="center" sx={{mb: 2, alignItems: 'center'}}>
+                <Typography variant="h6">Precio total: ${precioTotal()}</Typography>
                 <Button variant="outlined" color="error" sx={{padding: "10px", margin: "10px"}} onClick={()=>clear()}>Vaciar carrito</Button>
                 </Stack>
 
@@ -67,11 +84,11 @@ export const CartContainer = () => {
                 </div>
                 : <>
                 <Alert severity="info" sx={{padding: "10px", margin: "10px"}}>El carrito esta vacio</Alert>
-                <Link to="/">Volver a la página principal</Link>
+                <Button><Link to="/">Volver a la página principal</Link></Button>
                 </>
         }
     </div>
 }
-</div>
+</Container>
     )
 }

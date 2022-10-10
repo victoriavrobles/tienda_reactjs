@@ -27,7 +27,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (<>
     <Box>
-      <Grid container sx={{m: '10px', alignContent: 'center'}}>
+      <Grid container sx={{ mb: '100px', justifyContent: "center"}}>
     <ItemList itemList={items} />
     </Grid>
     </Box>
