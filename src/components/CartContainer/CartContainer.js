@@ -3,10 +3,11 @@ import { CartContext } from "../../context/CartContext";
 import {Link} from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Button, Container, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import { db } from "../../utils/firebase"
 import {collection, addDoc} from "firebase/firestore";
 import "./style.css"
+import { Box } from "@mui/system";
 
 export const CartContainer = () => {
     const {listaProductosCart, removeItem, clear, precioTotal} = useContext(CartContext);
@@ -66,22 +67,30 @@ export const CartContainer = () => {
             ))}
             </Table>
             </TableContainer>
-                
-                <Stack spacing={2} justifyContent="center" sx={{mb: 2, alignItems: 'center'}}>
-                <Typography variant="h6">Precio total: ${precioTotal()}</Typography>
-                <Button variant="outlined" color="error" sx={{padding: "10px", margin: "10px"}} onClick={()=>clear()}>Vaciar carrito</Button>
-                </Stack>
 
-                <form onSubmit={enviarOrden}>
-                    <label>Nombre: </label>
-                    <input type="text"></input>
-                    <label>Telefono: </label>
-                    <input type="number"></input>
-                    <label>Email: </label>
-                    <input type="email"></input>
-                    <Button type="submit">Enviar orden</Button>
+<Grid container spacing={2}>
+    <Grid md={6}>
+    <Typography variant="h5" sx={{m: "20px"}}>Finalizar compra</Typography>
+    <Divider variant="middle" />
+    <Stack sx={{display: 'flex', flexDirection: 'column', m: "15px"}}>
+    <form onSubmit={enviarOrden}>
+                    <div><TextField fullWidth id="name" label="Nombre" variant="filled" sx={{mb: "10px"}}/></div>
+                    <div><TextField fullWidth id="phone" label="Telefono" variant="filled" sx={{mb: "10px"}}/></div>
+                    <div><TextField fullWidth id="mail" label="Email" variant="filled" sx={{mb: "10px"}}/></div>
+                    <Button type="submit" fullWidth variant="contained">Enviar orden</Button>
                 </form>
-                </div>
+    </Stack>
+    </Grid>
+    <Grid md={6}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Typography variant="h5" sx={{m: "20px"}}>Total</Typography>
+        <Divider variant="middle"/>
+        <Typography variant="h6" align="center" sx={{m: "15px"}}>Precio total: ${precioTotal()}</Typography>
+        <Button variant="outlined" color="error" sx={{padding: "10px", margin: "10px"}} onClick={()=>clear()}>Vaciar carrito</Button>
+        </Box>
+    </Grid>
+</Grid>
+</div>
                 : <>
                 <Alert severity="info" sx={{padding: "10px", margin: "10px"}}>El carrito esta vacio</Alert>
                 <Button><Link to="/">Volver a la página principal</Link></Button>
