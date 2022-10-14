@@ -1,6 +1,6 @@
 # Tienda de Libros
 
-![](name-of-giphy.gif)
+![](tiendadelibros.gif)
 
 ## Instalación
 Para instalarlo podes clonar el repositorio
