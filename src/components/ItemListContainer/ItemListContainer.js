@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
@@ -27,7 +28,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (<>
     <Box>
-      <Grid container sx={{ mb: '100px', justifyContent: "center"}}>
+    <Grid container sx={{ mb: '100px', justifyContent: "center"}}>
     <ItemList itemList={items} />
     </Grid>
     </Box>

@@ -11,7 +11,6 @@ export const CartProvider = ({children}) => {
     }
 
     const addItem = (item, quantity) => {
-        console.log("item", item, "quantity", quantity)
         const productoNuevo = {
             ...item,
             quantity
@@ -43,7 +42,6 @@ export const CartProvider = ({children}) => {
 
     const precioTotal = () => {
         const total = listaProductosCart.reduce((acc, item) => acc + item.quantityPrice, 0)
-        console.log(total);
         return total;
     }
 

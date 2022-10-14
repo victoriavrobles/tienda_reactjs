@@ -6,7 +6,6 @@ import Stack from '@mui/material/Stack';
 import { Button, Container, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import { db } from "../../utils/firebase"
 import {collection, addDoc} from "firebase/firestore";
-import "./style.css"
 import { Box } from "@mui/system";
 
 export const CartContainer = () => {
@@ -22,7 +21,6 @@ export const CartContainer = () => {
                         items: listaProductosCart, 
                         total: precioTotal()
         }
-        console.log("orden", orden)
 
         const queryRef = collection(db, "orders");
         addDoc(queryRef, orden).then(response=>{console.log("response", response);
@@ -54,8 +52,8 @@ export const CartContainer = () => {
             <TableCell></TableCell>
             </TableRow>
             </TableHead>
-            {listaProductosCart.map(item => (
             <TableBody>
+            {listaProductosCart.map(item => (
                 <TableRow key={item.id}>
                     <TableCell><img height="90" width="72" src={item.image} alt={item.title}/></TableCell>
                     <TableCell>{item.title}</TableCell>
@@ -63,13 +61,13 @@ export const CartContainer = () => {
                     <TableCell>${item.price}</TableCell>
                     <TableCell><Button variant="outlined" color="error" onClick={()=>removeItem(item.id)}>Eliminar producto</Button></TableCell>
                 </TableRow>
-            </TableBody>
             ))}
+            </TableBody>
             </Table>
             </TableContainer>
 
 <Grid container spacing={2}>
-    <Grid md={6}>
+    <Grid md={6} item={true}>
     <Typography variant="h5" sx={{m: "20px"}}>Finalizar compra</Typography>
     <Divider variant="middle" />
     <Stack sx={{display: 'flex', flexDirection: 'column', m: "15px"}}>
@@ -77,11 +75,12 @@ export const CartContainer = () => {
                     <div><TextField fullWidth id="name" label="Nombre" variant="filled" sx={{mb: "10px"}}/></div>
                     <div><TextField fullWidth id="phone" label="Telefono" variant="filled" sx={{mb: "10px"}}/></div>
                     <div><TextField fullWidth id="mail" label="Email" variant="filled" sx={{mb: "10px"}}/></div>
+                    <div><TextField fullWidth id="mailrepeat" label="Repetir Email" variant="filled" sx={{mb: "10px"}}/></div>
                     <Button type="submit" fullWidth variant="contained">Enviar orden</Button>
                 </form>
     </Stack>
     </Grid>
-    <Grid md={6}>
+    <Grid md={6} item={true}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h5" sx={{m: "20px"}}>Total</Typography>
         <Divider variant="middle"/>

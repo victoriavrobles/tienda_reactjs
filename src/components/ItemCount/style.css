@@ -5,13 +5,3 @@
     padding: 10px;
 }
 
-.itemCountButton {
-    padding: 25px;
-    border-style: solid;
-}
-
-.itemCount{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}

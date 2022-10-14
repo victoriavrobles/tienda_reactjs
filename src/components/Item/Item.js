@@ -1,4 +1,4 @@
-import './style.css'
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 

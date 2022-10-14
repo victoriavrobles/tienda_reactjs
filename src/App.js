@@ -1,3 +1,4 @@
+import React from 'react';
 import NavBar from './components/Navbar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
@@ -12,7 +13,6 @@ function App() {
   return (
   <CartProvider>
     <BrowserRouter>
-      <div>
       <NavBar/>
         <Routes>
           <Route path="/" element={<ItemListContainer/>}/>
@@ -21,8 +21,7 @@ function App() {
           <Route path="/productos/:categoryId" element={<ItemListContainer/>}/>
           <Route path="/item/:productId" element={<ItemDetailContainer/>}/>
         </Routes>
-      </div>
-      <Footer/>
+      <Footer sx={{ alignContent: 'flex-end' }}/>
     </BrowserRouter>
   </CartProvider>
   );
