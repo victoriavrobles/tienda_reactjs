@@ -3,9 +3,10 @@
 ![](tiendadelibros.gif)
 
 ## Instalación
-Para instalarlo podes clonar el repositorio
+Para instalarlo podes clonar el repositorio  
 `$ git clone https://github.com/victoriavrobles/tienda_robles.git`
 
+Instalar dependencias
 `$ npm install`
 
 ## Deploy
