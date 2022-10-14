@@ -18,7 +18,7 @@ const ItemDetail = ({item})=>{
 
     return(
         <Container>
-    <Box sx={{p:"60px"}}>
+    <Box sx={{p:"40px"}}>
         <Typography variant="h3" align="center" sx={{mb: "45px"}}>{item.title}</Typography>
         <Grid container rowSpacing={1}>
             <Grid md={4} item={true}>

@@ -9,7 +9,7 @@ Para instalarlo podes clonar el repositorio
 `$ npm install`
 
 ## Deploy
-Podés visualizar el proyecto acá
+Podés visualizar el proyecto [acá](https://tiendadelibrosreact.netlify.app/)
 
 ## Objetivo
 Crear un ecommerce con React Js como proyecto final para el curso de React Js de CoderHouse.
